@@ -4,6 +4,39 @@ onScroll()
 function onScroll() {
     showNavOnScroll()
     showBackToTopButtonOnScroll()
+
+    activateMenuAtCurrentSection(home)
+    activateMenuAtCurrentSection(services)
+    activateMenuAtCurrentSection(about)
+    activateMenuAtCurrentSection(contact)
+}
+
+function activateMenuAtCurrentSection(section) {
+    //linha alvo
+    const targetLine = scrollY + innerHeight / 2
+
+    // verificar se a seção passou da linha
+    // o topo da seção 
+    const sectionTop = section.offsetTop
+    // a altura da seção
+    const sectionHeight = section.offsetHeight
+    const sectionTopReachOrPassedTargetline =  targetLine >= sectionTop
+
+    const sectionEndsAt = sectionTop + sectionHeight
+    const sectionEndPassedTargetLine = sectionEndsAt <= targetLine
+
+    const sectionBoundaries = 
+    sectionTopReachOrPassedTargetline &&
+     !sectionEndPassedTargetLine
+
+    const sectionId = section.getAttribute('id')
+    const menuElement = document
+    .querySelector(`.menu a[href*=${sectionId}]`)
+    
+    menuElement.classList.remove('active')
+    if (sectionBoundaries) {
+        menuElement.classList.add('active')
+    }
 }
 
 function showNavOnScroll() {
