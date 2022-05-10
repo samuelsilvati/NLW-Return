@@ -68,14 +68,14 @@ function closeMenu() {
 ScrollReveal({
   origin: 'top',
   distance: '30px',
-  duration: 700
-}).reveal(`
+  duration: 700})
+  .reveal(`
 #home, 
 #home img, 
 #home .stats, 
-#services
+#services,
 #services header,
 #services .card,
 #about,
-#about header.
-#abaout .content`);
+#about header,
+#about .content`);
